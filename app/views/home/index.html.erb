@@ -1,3 +1,6 @@
+<h1> Current-ish Time: <%= @time %></h1>
+<div id="messages"></div>
+
 <script src="http://localhost:<%= @endpoint.port %>/stomp.js"></script>
 
 <script type="text/javascript">
@@ -11,7 +14,8 @@
    client.subscribe("/broadcast", function(message) {
       console.log(message);
       console.log(message.body);
-      document.write("<p>" + message.body + "</p>");
+      var dom_node = document.getElementById("messages");
+      dom_node.innerHTML = dom_node.innerHTML + "<p>" + message.body + "</p>";
     } );
 
     client.send( "/broadcast", { header1: 'Header 1' }, "this is the payload" );
