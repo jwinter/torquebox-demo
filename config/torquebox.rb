@@ -16,6 +16,16 @@ TorqueBox.configure do
     route '/broadcast'
   end
 
+  topic '/redsnake' do
+    processor ExampleConsumer
+  end
+
+  service ExampleService do 
+    config do
+      name 'Joe W.'
+    end
+  end
+
   ruby do
     interactive true
   end

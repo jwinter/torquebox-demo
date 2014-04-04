@@ -4,7 +4,3 @@
 # for all configuration options.
 web:
   context: "/"
-# jobs:
-# heart_beat:
-#   job: HeartBeat
-#   cron: "*/15 * * * * ?"

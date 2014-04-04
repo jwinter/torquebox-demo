@@ -1,7 +1,6 @@
 require 'torquebox-stomp'
 
 class ExampleStomplet
-
   def initialize()
     @subscribers = []
   end

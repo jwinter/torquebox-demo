@@ -5,6 +5,11 @@ class HomeController < ApplicationController
     other_cache.put('demo_guy', {first_name: 'joe'}.to_json)
     @other_cache_value = other_cache.get('demo_guy')
 
+    queue = TorqueBox.fetch('/redsnake')
+    queue.publish "I'm a lasagna hog"
+
+
+
     @endpoint = TorqueBox.fetch('stomp-endpoint') # This is using their Dependency Injection framework
   end
 end
