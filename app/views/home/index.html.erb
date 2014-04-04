@@ -1,4 +1,5 @@
-<h1> Current-ish Time: <%= @time %></h1>
+<h1> Time from Rails cache store (from Infinispan): <%= @time %></h1>
+<h1> Value from other cache (also from Infinispan): <%= @other_cache_value %></h1>
 <div id="messages"></div>
 
 <script src="http://localhost:<%= @endpoint.port %>/stomp.js"></script>
@@ -18,7 +19,7 @@
       dom_node.innerHTML = dom_node.innerHTML + "<p>" + message.body + "</p>";
     } );
 
-    client.send( "/broadcast", { header1: 'Header 1' }, "this is the payload" );
+    client.send( "/broadcast", { header1: 'Header 1' }, "Hi, this message went through a WebSocket." );
   });
 
 </script>
