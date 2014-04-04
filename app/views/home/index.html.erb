@@ -1,0 +1,20 @@
+<script src="http://localhost:<%= @endpoint.port %>/stomp.js"></script>
+
+<script type="text/javascript">
+  //Open in two browsers and watch the awesome console.log action
+
+  client = new Stomp.Client(); 
+
+  client = new Stomp.Client( "localhost", 8675, false );
+  client.connect( function() {
+
+   client.subscribe("/broadcast", function(message) {
+      console.log(message);
+      console.log(message.body);
+      document.write("<p>" + message.body + "</p>");
+    } );
+
+    client.send( "/broadcast", { header1: 'Header 1' }, "this is the payload" );
+  });
+
+</script>
